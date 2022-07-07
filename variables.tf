@@ -57,3 +57,9 @@ variable "task_cpu" {
   description = "Desired CPU for the SonarQube task"
   default     = 1024
 }
+
+variable "internal_load_balancer" {
+  description = "If true, the LB will be internal"
+  type = bool
+  default = true
+}

@@ -59,6 +59,7 @@ No modules.
 | <a name="input_container_port"></a> [container\_port](#input\_container\_port) | The port number on the container | `number` | `9000` | no |
 | <a name="input_desired_count"></a> [desired\_count](#input\_desired\_count) | How many instances of this task should we run across our cluster | `number` | `1` | no |
 | <a name="input_health_check_path"></a> [health\_check\_path](#input\_health\_check\_path) | The path to register with the Application Load Balancer | `string` | `"/"` | no |
+| <a name="input_internal_load_balancer"></a> [internal\_load\_balancer](#input\_internal\_load\_balancer) | If true, the LB will be internal | `bool` | `true` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name | `string` | `"sonar"` | no |
 | <a name="input_public_subnets"></a> [public\_subnets](#input\_public\_subnets) | List of IDs of public subnets | `any` | n/a | yes |
 | <a name="input_subnets"></a> [subnets](#input\_subnets) | List of IDs of private subnets | `any` | n/a | yes |
