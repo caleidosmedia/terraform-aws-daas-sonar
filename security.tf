@@ -128,6 +128,30 @@ resource "aws_iam_role_policy_attachment" "codebuild_ci_basic_attachment" {
   policy_arn = aws_iam_policy.logs_policy.arn
 }
 
+resource "aws_iam_policy" "secrets_manager_policy" {
+  name = "${var.name}-secretsmanager-policy"
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:GetSecretValue"
+      ],
+      "Resource": "${aws_secretsmanager_secret.password.arn}"
+    }
+  ]
+}
+POLICY
+}
+
+resource "aws_iam_role_policy_attachment" "secrets_manager_policy_attachment" {
+  role       = aws_iam_role.ecs_task_execution_role.name
+  policy_arn = aws_iam_policy.secrets_manager_policy.arn
+}
+
 resource "aws_iam_role" "ecs_task_role" {
   name = "${var.name}-task-role"
 

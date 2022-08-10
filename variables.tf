@@ -60,6 +60,10 @@ variable "task_cpu" {
 
 variable "internal_load_balancer" {
   description = "If true, the LB will be internal"
-  type = bool
-  default = true
+  type        = bool
+  default     = true
+}
+
+variable "db_subnet_group_name" {
+  description = "Name of DB subnet group"
 }

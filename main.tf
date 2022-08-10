@@ -63,6 +63,22 @@ resource "aws_ecs_task_definition" "service" {
       command = [
         "-Dsonar.search.javaAdditionalOpts=-Dnode.store.allow_mmap=false"
       ]
+      environment = [
+        {
+          name  = "SONAR_JDBC_USERNAME"
+          value = "sonar"
+        },
+        {
+          name  = "SONAR_JDBC_URL"
+          value = "jdbc:postgresql://${aws_db_instance.sonar.endpoint}/${aws_db_instance.sonar.db_name}?useUnicode=true&characterEncoding=utf8"
+        }
+      ]
+      secrets = [
+        {
+          name      = "SONAR_JDBC_PASSWORD"
+          valueFrom = "${aws_secretsmanager_secret.password.arn}:password::"
+        }
+      ]
       Ulimits = [
         {
           HardLimit = 65535
