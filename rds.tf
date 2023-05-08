@@ -49,7 +49,7 @@ resource "aws_db_instance" "sonar" {
   #checkov:skip=CKV_AWS_118:Monitoring is not necessary.
   #checkov:skip=CKV_AWS_161:IAM authentication is not necessary.
   #checkov:skip=CKV_AWS_129:Logs are not necessary.
-  #checkov:skip=CKV_AWS_30:Logs are not necessary.
+  #checkov:skip=CKV2_AWS_30:Logs are not necessary.
   #checkov:skip=CKV_AWS_226:Upgrades are not necessary.
   allocated_storage         = 20
   engine                    = "postgres"
