@@ -1,4 +1,5 @@
 resource "aws_security_group" "alb" {
+  #checkov:skip=CKV_AWS_260:Needs public access.
   name        = "${var.name}-alb-sg"
   description = "Sonarqube Load Balancer Security Group"
   vpc_id      = var.vpc_id
@@ -66,6 +67,7 @@ resource "aws_security_group" "efs" {
     from_port       = 2049
     to_port         = 2049
     protocol        = "tcp"
+    description      = "Ingress rule"
   }
 
   egress {
