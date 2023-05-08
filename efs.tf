@@ -1,4 +1,6 @@
 resource "aws_efs_file_system" "fs" {
+  #checkov:skip=CKV_AWS_184:This EFS is for log.
+  #checkov:skip=CKV_AWS_42:This EFS is for log.
   tags = {
     Name = "${var.name}-fs"
   }
