@@ -5,7 +5,6 @@ resource "random_password" "master" {
 }
 
 resource "aws_secretsmanager_secret" "password" {
-  #checkov:skip=CKV_AWS_149:It's not sensitive data.
   name = "${var.name}-credentials-sm"
 }
 
@@ -32,7 +31,6 @@ resource "aws_security_group" "rds" {
     to_port         = 5432
     protocol        = "tcp"
     security_groups = [aws_security_group.ecs_tasks.id]
-    description      = "Ingress rule"
   }
   # Allow all outbound traffic.
   egress {
@@ -40,17 +38,10 @@ resource "aws_security_group" "rds" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
-    description      = "Egress rule"
   }
 }
 
 resource "aws_db_instance" "sonar" {
-  #checkov:skip=CKV_AWS_16:It's for logs.
-  #checkov:skip=CKV_AWS_118:Monitoring is not necessary.
-  #checkov:skip=CKV_AWS_161:IAM authentication is not necessary.
-  #checkov:skip=CKV_AWS_129:Logs are not necessary.
-  #checkov:skip=CKV_AWS_30:Logs are not necessary.
-  #checkov:skip=CKV_AWS_226:Upgrades are not necessary.
   allocated_storage         = 20
   engine                    = "postgres"
   engine_version            = "13.7"

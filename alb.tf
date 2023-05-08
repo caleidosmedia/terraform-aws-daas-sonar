@@ -62,7 +62,6 @@ resource "aws_alb_listener" "https" {
 }
 
 resource "aws_s3_bucket" "lb_logs" {
-  #checkov:skip=CKV_AWS_145:It's for logs.
   bucket        = var.alb_logs_bucket_name
   force_destroy = true
 }
@@ -102,3 +101,4 @@ resource "aws_s3_bucket_policy" "allow_access_from_another_account" {
   bucket = aws_s3_bucket.lb_logs.id
   policy = data.aws_iam_policy_document.allow_access_from_another_account.json
 }
+
