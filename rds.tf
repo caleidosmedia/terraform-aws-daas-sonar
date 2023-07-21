@@ -53,7 +53,7 @@ resource "aws_db_instance" "sonar" {
   #checkov:skip=CKV_AWS_226:Upgrades are not necessary.
   allocated_storage         = 20
   engine                    = "postgres"
-  engine_version            = "13.7"
+  engine_version            = "13.10"
   instance_class            = "db.t3.micro"
   db_name                   = "sonar"
   username                  = "sonar"
